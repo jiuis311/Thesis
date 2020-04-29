@@ -1,0 +1,18 @@
+\subsection{Môi trường phát triển}
+\subsubsection{Google Colab}
+Google colab là môi trường Jupyter Notebook miễn phí, không yêu cầu cài đặt và chạy hoàn toàn ở trên cloud. Sử dụng Google Colab, ta có thể thực thi viết và thực thi code, lưu và chia sẻ nghiên cứu, và có thể sử dụng nguồn tài nguyên tính toán mạnh.
+
+Điểm mạnh của Google colab là đã tích hợp sẵn rất nhiều thư viện Python. Đối với người bắt đầu học python thì rất nhanh và tiện lợi do không cần cài đặt gì. Google colab cho phép sử dụng GPU miễn phí. Người dùng có thể thực thi code không bị gián đoạn trong 12 giờ liên tục, được sử dụng RAM lên tới 25GB. Notebook luôn được lưu ở trên google drive nên có thể chỉnh sửa, chia sẻ và thực thi ở mọi nơi.
+
+Tuy vậy, Google colab vẫn có 1 điểm bất lợi như sau. Người dùng vẫn cần phải cài đặt tất cả thư viện không có sẵn và phải thực hiện điều này trong tất cả các session làm việc. Google drive luôn là nơi lấy dữ liệu và lưu trữ dữ liệu nhưng đôi khi cũng có thể là trên local, việc này có thể dẫn đến việc tiêu tốn bandwidth rất nhiều nên dataset lớn. Điểm bất lợi lớn nhất của Google colab là vì sử dụng data từ Google drive nên rất khó để sử dụng dataset quá lớn vì Google drive chỉ cung cấp 15 GB miễn phí.
+
+\subsection{Dataset}
+\subsubsection{MovieLens 100k}
+Bộ dữ liệu MovieLens được thu thập bởi GroupLens Research Project tại đại học Minnesota.
+Bộ dữ liệu này bao gồm 100.000 đánh giá (từ 1 đến 5) của 943 người dùng cho 1682 phim. Mỗi người dùng đều đã đánh giá ít nhất 20 phim và có thông tin cơ bản của người dùng như tuổi, giới tính, nghề nghiệp, mã zip.
+\newline Dữ liệu được thu thập qua website MovieLens (movielens.umn.edu) trong khoảng thời gian 7 tháng từ 19/9/1997 đến 22/4/1998. Bộ dữ liệu này đã được xóa những người dùng có ít hơn 20 đánh giá hay những người dùng không có thông tin cơ bản cụ thể. 
+
+\subsubsection{Goodbooks 10k}
+Bộ dữ liệu này chứa đánh giá của người dùng cho mười nghìn cuốn sách phổ biến, với 6 triệu đánh giá. Nguồn của những đánh giá này được tìm thấy trên internet. Nói chung có khoảng 100 đánh giá cho mỗi cuốn sách, tuy nhiên một số có ít đánh giá hơn. Có thể đánh giá từ một đến năm.
+\newline Cả ID sách và ID người dùng đều liền kề nhau. Đối với sách, chúng là 1 đến 10000, đối với người dùng là 1 đến 53424. Tất cả người dùng đã thực hiện ít nhất hai xếp hạng. Số xếp hạng trung bình cho mỗi người dùng là 8.
+\newline Ngoài ra còn có dữ liệu những cuốn sách được đánh dấu để đọc bởi người dùng, thông tin cơ bản của sách như tác giả, năm,... và thể loại sách.

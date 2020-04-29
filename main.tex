@@ -1,0 +1,68 @@
+% README
+% ------
+% apt install texlive-full texlive-science
+% thieu gi thieu apt search <cai bi thieu> hoac tra google
+% sau do dien vao cac file input va compile file main
+\documentclass{hust}
+\usepackage[utf8]{vietnam}
+\usepackage{graphicx}
+\usepackage[acronym,nonumberlist]{glossaries}
+\newacronym{CF}{CF}{Collaborative Filtering}
+\newacronym{MFCF}{MFCF}{Matrix factorization collaborative filtering}
+
+\graphicspath{ {./images/} }
+\lfoot{Luong Tuan Linh - 20152186 - IS1 K60}
+
+\makeglossaries
+
+\begin{document}
+
+\input{chapters/other/cover}
+
+\input{chapters/other/mission}
+
+\addcontentsline{toc}{chapter}{Lời cảm ơn}
+\chapter*{Lời cảm ơn}
+\input{chapters/other/acknowledgement}
+
+\addcontentsline{toc}{chapter}{Tóm tắt}
+\chapter*{Tóm tắt}
+\input{chapters/other/abstract}
+
+\input{chapters/other/abstract-vi}
+
+\addcontentsline{toc}{chapter}{Lời Nói Đầu}
+\chapter*{Lời Nói Đầu}
+\input{chapters/other/preface}
+
+\addcontentsline{toc}{chapter}{Thuật Ngữ}
+\chapter*{Thuật Ngữ}
+\input{chapters/other/glossaries}
+
+\addcontentsline{toc}{chapter}{Nội dung đã tìm hiểu}
+\chapter*{Nội dung đã tìm hiểu}
+\input{thesis/chapters/other/research_content}
+
+\listoftables
+\listoffigures
+
+\newpage
+\tableofcontents
+\newpage
+
+\acresetall
+
+% \input{chapters/introduction/index}
+\input{chapters/problem/index}
+% \input{chapters/problem_rl/index}
+% \input{chapters/propose/index}
+% \input{chapters/result/index}
+
+% \chapter*{Conclusion}
+% \addcontentsline{toc}{chapter}{Kết Luận} this line
+
+\newpage
+\bibliographystyle{plain} % We choose the "plain" reference style
+\bibliography{refs} % Entries are in the "refs.bib" file
+
+\end{document}

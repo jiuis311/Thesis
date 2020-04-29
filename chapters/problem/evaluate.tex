@@ -1,0 +1,45 @@
+\subsection{Đánh giá rating dự đoán}
+Độ chính xác của recommendation system có thể được kết luận dựa trên kết quả đánh giá. Việc đánh giá recommendation system tùy theo mỗi loại recommendation. Có 1 số phương pháp đánh giá như Mean Absolute Error (MAE), Normalized Mean Absolute Error (NMAE), Root Mean Squared Error (RMSE).
+
+\subsubsection{Mean Absolute Error (MAE) và Normalized Mean Absolute Error (NMAE)}
+Phương pháp được sử dụng tương đối phổ biến trong việc đánh giá recommendation system là MAE, tính toán trung bình của giá trị đối của hiệu giữa rating dự đoán và rating thực
+\begin{equation}
+    MAE = \frac{\sum_{\{i,j\}} |p_{i,j} - r_{i,j}|}{n}
+\end{equation}
+Trong đó n là tổng số rating của tất cả user, $p_{i,j}$ của user i đối với item j còn $r_{i,j}$ là giá trị rating thực của user i đối với item j. Giá trị MAE càng thấp chứng tỏ độ chính xác của dự đoán càng cao.
+\newline Recommendation system khác có thể dùng một thang đo khác để đánh giá. Normalized Mean Absolute Error (NMAE) giúp tính ra xem error chiếm bao nhiêu phần trăm của toàn bộ thang đánh giá.
+\begin{equation}
+    NMAE = \frac{MAE}{r_{\max} - r_{\min}}
+\end{equation}
+$r_{\max}$ là giá trị lớn nhất và $r_{\min}$ là giá trị nhỏ nhất có thể đánh giá.
+
+\subsubsection{Root Mean Squared Error (RMSE)}
+Root Mean Squared Error (RMSE) trở nên nổi tiếng vì nó là phương pháp đánh giá cho gợi ý phim của Netflix prize
+\begin{equation}
+    RMSE = \sqrt{\frac{1}{n} \underset{\{i,j\}}{\sum}(p_{i,j} - r_{i,j})^2}
+\end{equation}
+Trong đó n là tổng số rating của tất cả user, $p_{i,j}$ của user i đối với item j còn $r_{i,j}$ là giá trị rating thực của user i đối với item j. 
+
+\subsection{Đánh giá Top-N recommendation}
+\subsubsection{Hit Rate}
+Để đánh giá top N item gợi ý cho user, ta sử dụng hit rate. Mỗi khi user đánh giá 1 item trong top N item gợi ý, ta coi đó là 1 hit.
+\newline Các bước tính ra hit rate của 1 user như sau. Đầu tiên, tìm tất cả những item mà user đã đánh giá. Sau đó loại bỏ đi 1 trong những item này (đây còn gọi là leave-one-out cross validation). Sử dụng tất cả những item còn lại để tìm ra top N recommendation. Nếu như item đã bị loại bỏ xuất hiện trong top N recommendation thì đó là 1 hit. 
+Hit rate sẽ được tính bằng công thức sau.
+\begin{equation}
+    HR = \frac{total \: hit}{total \: user}
+\end{equation}
+Giá trị này cho thấy được tỉ lệ item đã bị loại bỏ xuất hiện trong top N gợi ý là bao nhiêu. Giá trị này càng cao chứng tỏ hệ thống Top-N recommendation càng tốt.
+\newline Vấn đề của phương pháp này là khó để có thể gợi ý đúng 1 item duy nhất trong top N gợi ý. Do đó giá trị của hit rate với phương pháp leave-one-out cross validation thường khá nhỏ trừ phi có tập dữ liệu lớn.
+
+\subsubsection{Rating Hit Rate (rHR)}
+Một cách khác để tính hit rate là chia ra thành các hit rate của mỗi giá trị đánh giá. Những giá trị này cho thấy được những item được gợi ý được user thích đến mức độ nào vì mục đích của Top-N recommendation là gợi ý những item mà user thực sự thích. Vậy nên ở đây ta quan tâm đến những rating có giá trị cao hơn là rating có giá trị thấp.
+
+\subsubsection{Cumulative Hit Rate (cHR)}
+Vì ta chỉ quan tâm tới những rating cao, ta có thể bỏ qua rating thấp và chỉ tính toán hit rate của giá trị cao. Ví dụ như chỉ tính toán hit rate của của rating >= 4. Nếu gặp hit nhưng rating lại < 4 thì vẫn không được tính là hit.
+
+\subsubsection{Average Reciprocal Hit Ranking (ARHR)}
+Phương pháp này không chỉ tính hit rate mà còn đánh giá cả việc hit đó xuất hiện ở vị trí nào trong xếp hạng top N item được gợi ý. Hit ở vị trí càng cao trong bảng xếp hạng này thì có giá trị càng lớn. ARHR có thể được tính theo công thức sau đây.
+\begin{equation}
+    ARHR = \frac{\sum^n_{i=1} \frac{1}{rank_i}}{total \: user}
+\end{equation}
+Với $rank_i$ là vị trí của hit i trong top N recommendation. Ví dụ như 1 hit ở vị trí 1 sẽ có giá trị là 1 nhưng 1 hit ở vị trí 3 thì sẽ chỉ có giá trị là $\frac{1}{3}$.
